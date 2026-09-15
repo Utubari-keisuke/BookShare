@@ -29,7 +29,7 @@ public class Book {
 		return isborrowed;
 	}
 
-	public void setBorowed(boolean isborrowed) {
+	public void setBorrowed(boolean isborrowed) {
 		this.isborrowed = isborrowed;
 	}
 

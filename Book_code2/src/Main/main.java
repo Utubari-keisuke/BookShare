@@ -70,6 +70,44 @@ public class main {
 					}
 				}
 			}
+
+			else if (menu == 3) {
+				System.out.print("変更したい本のIDを入力: ");
+				int targetId = -1;
+				try {
+					targetId = scanner.nextInt();
+					scanner.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("エラー: 数字を入力してください。");
+					scanner.nextLine();
+					continue;
+				}
+
+				Book targetBook = null;
+				for (int i = 0; i < books.size(); i++) {
+					if (books.get(i).getId() == targetId) {
+						targetBook = books.get(i);
+						break;
+					}
+				}
+
+				if (targetBook == null) {
+					System.out.println("指定されたIDの本は見つかりませんでした。");
+					continue;
+				}
+
+				if (!targetBook.isBorrowed()) {
+					System.out.print("借りる人の名前を入力: ");
+					String name = scanner.nextLine();
+					targetBook.setBorrowed(true);
+					targetBook.setBorrower(name);
+					System.out.println(name + "さんに貸出しました。");
+				} else {
+					System.out.println("返却処理を行いました。");
+					targetBook.setBorrowed(false);
+					targetBook.setBorrower("なし");
+				}
+			}
 		}
 	}
 }
