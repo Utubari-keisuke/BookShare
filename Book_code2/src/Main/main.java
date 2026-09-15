@@ -1,7 +1,10 @@
-import java.awt.print.Book;
+package Main;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import BOOK.Book;
 
 public class main {
 	public static void main(String[] args) {
@@ -44,25 +47,26 @@ public class main {
 				}
 
 				Book newBook = new Book(nextId, title);
-				booklist.add(newBook);
+				books.add(newBook);
 				System.out.println("『" + title + " 』を登録しました。(ID: " + nextId + ")");
 
 				nextId++;
 			}
 
 			else if (menu == 2) {
-				if (bookList.isEmpty()) {
+				if (books.isEmpty()) {
 					System.out.println("登録されている本はありません。");
 					continue;
 				}
 
 				System.out.println("\n--- 本の一覧 ---");
-				for (int i = 0; i < bookList.size(); i++) {
-					Book b = bookList.get(i);
+				for (int i = 0; i < books.size(); i++) {
+					Book b = books.get(i);
 					String status = b.isBorrowed() ? "貸出中(" + b.getBorrower() + ")" : "貸出可能";
 					System.out.println("ID: " + b.getId() + " | タイトル: " + b.getTitle() + " | 状態: " + status);
 					if (b.getRating() > 0) {
 						System.out.println("   評価: ★" + b.getRating() + " / 感想: " + b.getReview());
+
 					}
 				}
 			}
