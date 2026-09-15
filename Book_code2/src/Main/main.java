@@ -105,7 +105,7 @@ public class main {
 				} else {
 					System.out.println("返却処理を行いました。");
 					targetBook.setBorrowed(false);
-					targetBook.setBorrower("なし");
+					targetBook.setBorrower("なしです");
 				}
 			}
 		}
