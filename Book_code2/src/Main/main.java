@@ -65,7 +65,7 @@ public class main {
 					String status = b.isBorrowed() ? "貸出中(" + b.getBorrower() + ")" : "貸出可能";
 					System.out.println("ID: " + b.getId() + " | タイトル: " + b.getTitle() + " | 状態: " + status);
 					if (b.getRating() > 0) {
-						System.out.println("   評価: ★" + b.getRating() + " / 感想: " + b.getReview());
+						System.out.println("評価: ★" + b.getRating() + "/ 感想:" + b.getReview());
 
 					}
 				}
