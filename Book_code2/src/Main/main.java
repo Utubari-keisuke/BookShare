@@ -32,7 +32,7 @@ public class main {
 				continue;
 			}
 
-			if (menu == 0) {
+			if (menu == 6) {
 				System.out.println("アプリを終了します。");
 				break;
 			}
@@ -191,7 +191,7 @@ public class main {
 					System.out.println("指定されたIDの本は見つかりませんでした。");
 				}
 			} else {
-				System.out.println("無効な番号です。 0〜5の数字を入力してください。");
+				System.out.println("無効な番号です。 1〜6の数字を入力してください。");
 			}
 
 		}
