@@ -130,19 +130,27 @@ public class main {
 					System.out.println("指定されたIDの本は見つかりませんでした。");
 					continue;
 				}
-				System.out.print("評価を入力してください（1～5）: ");
-				int rate = 0;
-				try {
-					rate = scanner.nextInt();
-					scanner.nextLine();
-				} catch (InputMismatchException e) {
-					System.out.println("エラー: 数字を入力してください。");
-					scanner.nextLine();
-					continue;
-				}
-				if (rate < 1 || rate > 5) {
-					System.out.println("エラー: 1～5の範囲で入力してください。");
-					continue;
+				int rate = -1;
+				boolean isRateValid = false;
+				while (true) {
+					System.out.print("評価を入力してください。 (1～5): ");
+					try {
+						rate = scanner.nextInt();
+						scanner.nextLine();
+
+						if (rate >= 1 && rate <= 5) {
+							isRateValid = true;
+						} else {
+							System.out.println("エラー: 1～5の範囲で入力してください。");
+
+						}
+
+					} catch (InputMismatchException e) {
+						System.out.println("エラー: 数字を入力してください。");
+						scanner.nextLine();
+						continue;
+					}
+					break;
 				}
 
 				System.out.print("感想を入力: ");
@@ -153,6 +161,40 @@ public class main {
 				System.out.println("レビューを保存しました。");
 			}
 
+			else if (menu == 5) {
+				System.out.print("削除したい本のIDを入力: ");
+				int targetId = -1;
+				try {
+					targetId = scanner.nextInt();
+					scanner.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("エラー: 数字を入力してください。");
+					scanner.nextLine();
+					continue;
+				}
+
+				boolean isFound = false;
+				int targetIndex = -1;
+
+				for (int i = 0; i < books.size(); i++) {
+					if (books.get(i).getId() == targetId) {
+						targetIndex = i;
+						isFound = true;
+						break;
+					}
+				}
+				if (isFound) {
+					String removedTitle = books.get(targetIndex).getTitle();
+					books.remove(targetIndex);
+					System.out.println("『" + removedTitle + "』を削除しました。");
+				} else {
+					System.out.println("指定されたIDの本は見つかりませんでした。");
+				}
+			} else {
+				System.out.println("無効な番号です。 0〜5の数字を入力してください。");
+			}
+
 		}
+		scanner.close();
 	}
 }
