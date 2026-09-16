@@ -25,7 +25,7 @@ public class main {
 			int menu = -1;
 			try {
 				menu = scanner.nextInt();
-				scanner.nextLine(); // 改行の読み飛ばし
+				scanner.nextLine();
 			} catch (InputMismatchException e) {
 				System.out.println("半角数字を入力してください。");
 				scanner.nextLine();
@@ -107,7 +107,52 @@ public class main {
 					targetBook.setBorrowed(false);
 					targetBook.setBorrower("なしです");
 				}
+			} else if (menu == 4) {
+				System.out.print("評価・レビューを書く本のIDを入力: ");
+				int targetId = -1;
+				try {
+					targetId = scanner.nextInt();
+					scanner.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("エラー: 数字を入力してください。");
+					scanner.nextLine();
+					continue;
+				}
+
+				Book targetBook = null;
+				for (int i = 0; i < books.size(); i++) {
+					if (books.get(i).getId() == targetId) {
+						targetBook = books.get(i);
+						break;
+					}
+				}
+				if (targetBook == null) {
+					System.out.println("指定されたIDの本は見つかりませんでした。");
+					continue;
+				}
+				System.out.print("評価を入力してください（1～5）: ");
+				int rate = 0;
+				try {
+					rate = scanner.nextInt();
+					scanner.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("エラー: 数字を入力してください。");
+					scanner.nextLine();
+					continue;
+				}
+				if (rate < 1 || rate > 5) {
+					System.out.println("エラー: 1～5の範囲で入力してください。");
+					continue;
+				}
+
+				System.out.print("感想を入力: ");
+				String reviewText = scanner.nextLine();
+
+				targetBook.setRating(rate);
+				targetBook.setReview(reviewText);
+				System.out.println("レビューを保存しました。");
 			}
+
 		}
 	}
 }
