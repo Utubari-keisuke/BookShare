@@ -66,7 +66,6 @@ public class ConsoleView {
 			}
 
 			System.out.println("ID: " + b.getId() + " | 書名: " + b.getTitle() + " | 貸出状態: " + status);
-			// 評価が0（未設定）なら出さない
 			if (b.getRating() > 0) {
 				System.out.println("  -> 評価: " + b.getRating() + "点 / レビュー: " + b.getReview());
 			}
