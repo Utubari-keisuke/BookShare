@@ -18,7 +18,7 @@ public class Main {
 			view.printMenu();
 			int selectedMenu = view.inputNumber();
 
-			// if-elseで書くと長くなるのでテキストおすすめのswitch文を採用
+			// [伊織さんより]if-elseで書くと長くなるのでテキストおすすめのswitch文を採用
 			switch (selectedMenu) {
 			case 1:
 				String inputTitle = view.inputString("登録する本のタイトルを入力: ");
