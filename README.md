@@ -45,8 +45,6 @@ src/
     └── Book.java         # 本のデータ構造（タイトル、貸出状態、レビュー等））
 ``` 
 
-
-`
 ## 手順
 ```mermaid 
 flowchart TD
